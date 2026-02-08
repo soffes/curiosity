@@ -28,6 +28,5 @@ blueprints/script/homeassistant
 # HACS
 /custom_components/hacs
 
-/.vscode
 /node-red
 /zigbee2mqtt

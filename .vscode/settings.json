@@ -1,0 +1,8 @@
+{
+  "cSpell.enabledFileTypes": {
+    "esphome": false
+  },
+  "files.associations": {
+    "esphome/*.yaml": "esphome"
+  }
+}
