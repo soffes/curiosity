@@ -7,7 +7,8 @@ esp32:
     type: arduino
 
 logger:
-  level: INFO
+  level: DEBUG
+  hardware_uart: USB_SERIAL_JTAG
 
 api:
   encryption:
@@ -25,6 +26,11 @@ ethernet:
   cs_pin: GPIO14
   interrupt_pin: GPIO10
   reset_pin: GPIO9
+  clock_speed: 25MHz
+  manual_ip:
+    static_ip: 10.0.1.4
+    gateway: 10.0.1.1
+    subnet: 255.255.255.0
 
 web_server:
   local: true
@@ -58,16 +64,16 @@ light:
 output:
   - platform: ledc
     id: lights1
-    pin: GPIO0
-
-  - platform: ledc
-    id: lights2
     pin: GPIO1
 
   - platform: ledc
-    id: lights3
+    id: lights2
     pin: GPIO2
 
   - platform: ledc
+    id: lights3
+    pin: GPIO15
+
+  - platform: ledc
     id: lights4
-    pin: GPIO3
+    pin: GPIO18
