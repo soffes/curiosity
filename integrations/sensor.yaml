@@ -6,10 +6,9 @@
       unit_of_measurement: "%"
       device_class: battery
       value_template: >
-        {% set consumed = states('sensor.battery_consumed') | float %}
-        {% set soc_int = states('sensor.state_of_charge_int') | float | round(1) %}
-        {% set soc = (((600.0 - consumed) / 600.0) * 100.0) | round(1) %}
-        {% if soc == 100 and soc_int < 100 %}{{ soc_int }}{% else %}{{ soc }}{% endif %}
+        {% set capacity = 600.0 %}
+        {% set consumed = states('sensor.battery_consumed_ah') | float %}
+        {{ (((capacity - consumed) / capacity) * 100.0) | round(1) }}
 
     inverter_state:
       unique_id: inverter_state
