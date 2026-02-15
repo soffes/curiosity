@@ -6,6 +6,11 @@ automation: !include_dir_merge_list automations
 group: !include integrations/group.yaml
 script: !include scripts.yaml
 
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.30.33.0/24
+
 logger:
   logs:
     homeassistant.components.modbus: debug
