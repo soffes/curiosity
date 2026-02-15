@@ -3,7 +3,9 @@
     "allow": [
       "WebSearch",
       "WebFetch(domain:esphome.io)",
-      "WebFetch(domain:www.amazon.com)"
+      "WebFetch(domain:www.amazon.com)",
+      "Bash(rsvg-convert:*)",
+      "Bash(magick:*)"
     ]
   }
 }
