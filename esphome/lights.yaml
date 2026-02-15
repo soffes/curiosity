@@ -36,44 +36,50 @@ web_server:
   local: true
   ota: false
 
+switch:
+  - platform: gpio
+    pin: GPIO48
+    name: "Starlink Power"
+    id: relay1
+
 light:
   - platform: monochromatic
     output: lights1
     name: Ceiling Lights 1
     icon: mdi:light-recessed
-    restore_mode: RESTORE_DEFAULT_ON
 
   - platform: monochromatic
     output: lights2
     name: Ceiling Lights 2
     icon: mdi:light-recessed
-    restore_mode: RESTORE_DEFAULT_ON
 
   - platform: monochromatic
     output: lights3
     name: Ceiling Lights 3
     icon: mdi:light-recessed
-    restore_mode: RESTORE_DEFAULT_ON
 
   - platform: monochromatic
     output: lights4
     name: Ceiling Lights 4
     icon: mdi:light-recessed
-    restore_mode: RESTORE_DEFAULT_ON
 
 output:
   - platform: ledc
     id: lights1
     pin: GPIO1
+    frequency: 500Hz
 
   - platform: ledc
     id: lights2
     pin: GPIO2
+    frequency: 500Hz
 
   - platform: ledc
     id: lights3
     pin: GPIO15
+    frequency: 500Hz
 
   - platform: ledc
     id: lights4
     pin: GPIO18
+    frequency: 500Hz
