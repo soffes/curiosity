@@ -9,7 +9,7 @@ script: !include scripts.yaml
 http:
   use_x_forwarded_for: true
   trusted_proxies:
-    - 172.30.33.0/24
+    - 127.0.0.1
 
 logger:
   logs:
@@ -23,6 +23,7 @@ input_boolean: !include integrations/input_boolean.yaml
 input_number: !include integrations/input_number.yaml
 input_select: !include integrations/input_select.yaml
 modbus: !include integrations/modbus.yaml
+rest_command: !include integrations/rest_command.yaml
 mqtt: !include integrations/mqtt.yaml
 scene: !include integrations/scene.yaml
-sensor: !include integrations/sensor.yaml
+template: !include integrations/template.yaml

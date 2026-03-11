@@ -1,0 +1,9 @@
+- alias: Update Helios Location
+  trigger:
+    - platform: state
+      entity_id: sensor.peplink_location
+  action:
+    - service: rest_command.update_helios_location
+      data:
+        latitude: "{{ (states('sensor.peplink_location') | from_json).latitude }}"
+        longitude: "{{ (states('sensor.peplink_location') | from_json).longitude }}"

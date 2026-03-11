@@ -1,0 +1,36 @@
+- sensor:
+  - unique_id: state_of_charge
+    name: State of Charge
+    unit_of_measurement: "%"
+    device_class: battery
+    state: >
+      {% set capacity = 600.0 %}
+      {% set consumed = states('sensor.battery_consumed_ah') | float %}
+      {{ (((capacity - consumed) / capacity) * 100.0) | round(1) }}
+
+  - unique_id: inverter_state
+    name: Inverter State
+    state: >
+      {% set state = states('sensor.inverter_state_int') | int %}
+      {% if state == 1 %}Charger Only{% elif state == 2 %}Inverter Only{% elif state == 3 %}On{% else %}Off{% endif %}
+
+  - unique_id: battery_power
+    name: Battery Power
+    unit_of_measurement: W
+    device_class: power
+    state: >
+      {{ (states('sensor.battery_voltage') | float * states('sensor.battery_current') | float) | round(1) }}
+
+  - unique_id: battery_consumed
+    name: Battery Consumed
+    unit_of_measurement: kWh
+    device_class: energy
+    state: >
+      {{ (states('sensor.battery_consumed_ah') | float * states('sensor.battery_voltage') | float / 1000.0) | round(2) }}
+
+  - unique_id: battery_state
+    name: Battery State
+    state: >
+      {% if states('sensor.battery_state_int') == '0' %}Idle{% elif states('sensor.battery_state_int') == '1' %}Charging{% elif states('sensor.battery_state_int') == '2' %}Discharging{% endif %}
+    icon: >
+      {% if states('sensor.battery_state_int') == '0' %}mdi:battery{% elif states('sensor.battery_state_int') == '1' %}mdi:battery-arrow-up{% elif states('sensor.battery_state_int') == '2' %}mdi:battery-arrow-down{% endif %}

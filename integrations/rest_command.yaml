@@ -1,0 +1,11 @@
+update_helios_location:
+  url: !secret helios_device_tracker_url
+  method: POST
+  headers:
+    Authorization: !secret helios_authorization
+    Content-Type: application/json
+  payload: >
+    {
+      "dev_id": "curiosity",
+      "gps": [{{ latitude }}, {{ longitude }}]
+    }
