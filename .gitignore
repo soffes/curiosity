@@ -1,5 +1,6 @@
 .DS_Store
 .cloud
+.ha_*
 .storage
 .uuid
 deps
@@ -26,7 +27,7 @@ blueprints/automation/homeassistant
 blueprints/script/homeassistant
 
 # HACS
-/custom_components/hacs
+/custom_components
 
 /node-red
 /zigbee2mqtt
